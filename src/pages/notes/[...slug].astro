@@ -21,7 +21,7 @@ const { note } = Astro.props;
 const meta = {
 	description:
 		note.data.description ||
-		`Read about my note posted on: ${note.data.publishDate.toLocaleDateString()}`,
+		`阅读我在 ${note.data.publishDate.toLocaleDateString()} 发布的笔记`,
 	title: note.data.title,
 };
 ---

@@ -1,7 +1,7 @@
 ---
-description: Learn about image handling in Astro Cactus
+description: 了解 Astro Cactus 中的图像处理
 ---
 
-This is an example of a custom intro on a tag page. Its markdown can be found in `src/content/tag/image.md`.
+这是标签页面自定义介绍的示例。其 markdown 源码可在 `src/content/tag/image.md` 中找到。
 
-Posts tagged with "image" demonstrate various image-related features including cover images, social media cards, and image optimization.
+标记为"image"的文章展示了各种图像相关功能，包括封面图片、社交媒体卡片和图像优化。

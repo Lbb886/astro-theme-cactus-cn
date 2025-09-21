@@ -3,7 +3,7 @@ import type { AstroExpressiveCodeOptions } from "astro-expressive-code";
 
 export const siteConfig: SiteConfig = {
 	// Used as both a meta property (src/components/BaseHead.astro L:31 + L:49) & the generated satori png (src/pages/og-image/[slug].png.ts)
-	author: "Chris Williams",
+	author: "博客作者",
 	// Date.prototype.toLocaleDateString() parameters, found in src/utils/date.ts.
 	date: {
 		locale: "zh-CN",
@@ -14,7 +14,7 @@ export const siteConfig: SiteConfig = {
 		},
 	},
 	// Used as the default description meta property and webmanifest description
-	description: "An opinionated starter theme for Astro",
+	description: "一个基于 Astro 的个人博客主题",
 	// HTML lang property, found in src/layouts/Base.astro L:18 & astro.config.ts L:48
 	lang: "zh-CN",
 	// Meta property, found in src/components/BaseHead.astro L:42
@@ -34,19 +34,19 @@ export const siteConfig: SiteConfig = {
 export const menuLinks: { path: string; title: string }[] = [
 	{
 		path: "/",
-		title: "Home",
+		title: "首页",
 	},
 	{
 		path: "/about/",
-		title: "About",
+		title: "关于",
 	},
 	{
 		path: "/posts/",
-		title: "Blog",
+		title: "博客",
 	},
 	{
 		path: "/notes/",
-		title: "Notes",
+		title: "笔记",
 	},
 ];
 
