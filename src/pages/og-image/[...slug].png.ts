@@ -51,7 +51,10 @@ export async function GET(context: APIContext) {
 	const { pubDate, title } = context.props as Props;
 
 	const postDate = getFormattedDate(pubDate, {
+		timeZone: "Asia/Shanghai",
+		year: "numeric",
 		month: "long",
+		day: "numeric",
 		weekday: "long",
 	});
 	const svg = await satori(markup(title, postDate), ogOptions);

@@ -3,9 +3,11 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import SocialList from "@/components/SocialList.astro";
 import PostPreview from "@/components/blog/PostPreview.astro";
 import Note from "@/components/note/Note.astro";
+import BackToTop from "@/components/BackToTop.astro";
 import { getAllPosts } from "@/data/post";
 import PageLayout from "@/layouts/Base.astro";
 import { collectionDateSort } from "@/utils/date";
+import { t } from "@/i18n/translations";
 
 // Posts
 const MAX_POSTS = 10;
@@ -24,8 +26,8 @@ const allNotes = await getCollection("note");
 const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 ---
 
-<PageLayout meta={{ title: "首页" }}>
-<section>
+<PageLayout meta={{ title: t("nav.home") }}>
+<section id="home-hero">
 <h1 class="title mb-12">你好，世界！</h1>
 <p class="mb-4">
 嗨，我是 Astro 的一个主题，一个简单的入门模板，你可以用来创建你的网站或博客。
@@ -63,17 +65,17 @@ allPostsByDate.map((p) => (
 {
 latestNotes.length > 0 && (
 <section class="mt-16">
-<h2 class="title text-accent mb-6 text-xl">
+<h2 class="title text-accent mb-8 text-xl">
 <a href="/notes/">笔记</a>
 </h2>
-<ul class="space-y-6" role="list">
+<div class="grid gap-6">
 {latestNotes.map((note) => (
-<li>
 <Note note={note} as="h3" isPreview />
-</li>
 ))}
-</ul>
+</div>
 </section>
 )
 }
+<!-- 回到顶部按钮 -->
+<BackToTop targetId="home-hero" />
 </PageLayout>

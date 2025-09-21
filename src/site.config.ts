@@ -1,5 +1,6 @@
 import type { SiteConfig } from "@/types";
 import type { AstroExpressiveCodeOptions } from "astro-expressive-code";
+import type { TranslationKey } from "@/i18n/translations";
 
 export const siteConfig: SiteConfig = {
 	// Used as both a meta property (src/components/BaseHead.astro L:31 + L:49) & the generated satori png (src/pages/og-image/[slug].png.ts)
@@ -8,9 +9,10 @@ export const siteConfig: SiteConfig = {
 	date: {
 		locale: "zh-CN",
 		options: {
-			day: "numeric",
-			month: "short",
 			year: "numeric",
+			month: "long",
+			day: "numeric",
+			timeZone: "Asia/Shanghai",
 		},
 	},
 	// Used as the default description meta property and webmanifest description
@@ -31,22 +33,22 @@ export const siteConfig: SiteConfig = {
 };
 
 // Used to generate links in both the Header & Footer.
-export const menuLinks: { path: string; title: string }[] = [
+export const menuLinks: { path: string; titleKey: TranslationKey }[] = [
 	{
 		path: "/",
-		title: "首页",
+		titleKey: "nav.home",
 	},
 	{
 		path: "/about/",
-		title: "关于",
+		titleKey: "nav.about",
 	},
 	{
 		path: "/posts/",
-		title: "博客",
+		titleKey: "nav.blog",
 	},
 	{
 		path: "/notes/",
-		title: "笔记",
+		titleKey: "nav.notes",
 	},
 ];
 

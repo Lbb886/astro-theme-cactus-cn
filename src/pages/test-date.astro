@@ -1,0 +1,43 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import { getFormattedDate, getFormattedDateTime, getRelativeTime } from "@/utils/date";
+
+const testDate = new Date();
+const oldDate = new Date("2024-01-15 10:30:00");
+
+const meta = {
+	title: "日期格式测试",
+	description: "测试中文日期格式和上海时区",
+};
+---
+
+<PageLayout meta={meta}>
+	<h1 class="title mb-6">日期格式测试</h1>
+	
+	<div class="prose prose-cactus max-w-none">
+		<h2>当前时间</h2>
+		<ul>
+			<li><strong>默认格式：</strong><FormattedDate date={testDate} /></li>
+			<li><strong>完整日期：</strong>{getFormattedDateTime(testDate)}</li>
+			<li><strong>日期+时间：</strong>{getFormattedDateTime(testDate, true)}</li>
+			<li><strong>相对时间：</strong>{getRelativeTime(testDate)}</li>
+		</ul>
+
+		<h2>历史日期示例</h2>
+		<ul>
+			<li><strong>默认格式：</strong><FormattedDate date={oldDate} /></li>
+			<li><strong>完整日期：</strong>{getFormattedDateTime(oldDate)}</li>
+			<li><strong>日期+时间：</strong>{getFormattedDateTime(oldDate, true)}</li>
+			<li><strong>相对时间：</strong>{getRelativeTime(oldDate)}</li>
+		</ul>
+
+		<h2>原始时间戳对比</h2>
+		<ul>
+			<li><strong>当前时间 UTC：</strong>{testDate.toISOString()}</li>
+			<li><strong>当前时间 上海：</strong>{testDate.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</li>
+			<li><strong>历史时间 UTC：</strong>{oldDate.toISOString()}</li>
+			<li><strong>历史时间 上海：</strong>{oldDate.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</li>
+		</ul>
+	</div>
+</PageLayout>

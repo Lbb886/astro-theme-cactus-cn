@@ -6,9 +6,8 @@ export function remarkReadingTime() {
 	return (tree, { data }) => {
 		const textOnPage = mdastToString(tree);
 		const readingTime = getReadingTime(textOnPage);
-		// 转换为中文格式
+		// 只传递分钟数，让前端处理翻译
 		const minutes = Math.ceil(readingTime.minutes);
-		const chineseReadingTime = `${minutes} 分钟阅读`;
-		data.astro.frontmatter.readingTime = chineseReadingTime;
+		data.astro.frontmatter.readingTime = minutes;
 	};
 }

@@ -2,10 +2,11 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/FormattedDate.astro";
+import { t } from "@/i18n/translations";
 
 interface Props {
 	content: CollectionEntry<"post">;
-	readingTime: string;
+	readingTime: number;
 }
 
 const {
@@ -14,7 +15,10 @@ const {
 } = Astro.props;
 
 const dateTimeOptions: Intl.DateTimeFormatOptions = {
+	timeZone: "Asia/Shanghai",
+	year: "numeric",
 	month: "long",
+	day: "numeric",
 };
 ---
 
@@ -39,12 +43,12 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
 	<p class="font-semibold">
 		<FormattedDate date={data.publishDate} dateTimeOptions={dateTimeOptions} /> /{" "}
-		{readingTime}
+		{readingTime} {t("blog.readingTime")}
 	</p>
 	{
 		data.updatedDate && (
 			<span class="bg-quote/5 text-quote rounded-lg px-2 py-1">
-				更新于:
+				{t("blog.updatedOn")}:
 				<FormattedDate class="ms-1" date={data.updatedDate} dateTimeOptions={dateTimeOptions} />
 			</span>
 		)
@@ -74,7 +78,7 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 				<>
 					{/* prettier-ignore */}
 					<span class="contents">
-						<a class="cactus-link inline-block before:content-['#']" data-pagefind-filter={`tag:${tag}`} href={`/tags/${tag}/`}><span class="sr-only">查看更多带有此标签的博客&nbsp;</span>{tag}
+						<a class="cactus-link inline-block before:content-['#']" data-pagefind-filter={`tag:${tag}`} href={`/tags/${tag}/`}><span class="sr-only">{t("common.viewAll")}&nbsp;</span>{tag}
 						</a>{i < data.tags.length - 1 && ", "}
 					</span>
 				</>

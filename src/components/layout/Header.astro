@@ -2,7 +2,8 @@
 import Search from "@/components/Search.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import { menuLinks } from "@/site.config";
-import {siteConfig} from "../../site.config";
+import { siteConfig } from "../../site.config";
+import { t } from "@/i18n/translations";
 ---
 
 <header class="group relative mb-28 flex items-center sm:ps-18" id="main-header">
@@ -37,7 +38,7 @@ import {siteConfig} from "../../site.config";
 						class="px-4 py-4 underline-offset-2 hover:underline sm:py-0"
 						href={link.path}
 					>
-						{link.title}
+						{t(link.titleKey)}
 					</a>
 				))
 			}

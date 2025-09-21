@@ -3,22 +3,49 @@ import { render } from "astro:content";
 import { getAllPosts } from "@/data/post";
 import PostLayout from "@/layouts/BlogPost.astro";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { collectionDateSort } from "@/utils/date";
 
 // if you're using an adaptor in SSR mode, getStaticPaths wont work -> https://docs.astro.build/en/guides/routing/#modifying-the-slug-example-for-ssr
 export const getStaticPaths = (async () => {
 	const blogEntries = await getAllPosts();
-	return blogEntries.map((post) => ({
-		params: { slug: post.id },
-		props: { post },
-	}));
+	const sortedPosts = blogEntries.sort(collectionDateSort); // 按发布日期降序排列（新 -> 旧）
+	
+	return sortedPosts.map((post, index) => {
+		// 获取相邻文章
+		// 因为 sortedPosts 是按时间降序排列的：
+		// - 上一篇文章：时间更旧的文章（index + 1）
+		// - 下一篇文章：时间更新的文章（index - 1）
+		const prevPost = index < sortedPosts.length - 1 ? sortedPosts[index + 1] : undefined;
+		const nextPost = index > 0 ? sortedPosts[index - 1] : undefined;
+		
+		// 获取推荐文章（同标签的其他文章，最多3篇）
+		const postTags = post.data.tags || [];
+		const relatedPosts = sortedPosts
+			.filter((p) => {
+				if (p.id === post.id) return false; // 排除当前文章
+				const pTags = p.data.tags || [];
+				return postTags.some(tag => pTags.includes(tag)); // 有共同标签
+			})
+			.slice(0, 3);
+		
+		return {
+			params: { slug: post.id },
+			props: { 
+				post,
+				prevPost,
+				nextPost,
+				relatedPosts: relatedPosts.length > 0 ? relatedPosts : undefined
+			},
+		};
+	});
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
-const { post } = Astro.props;
+const { post, prevPost, nextPost, relatedPosts } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<PostLayout post={post}>
+<PostLayout post={post} prevPost={prevPost} nextPost={nextPost} relatedPosts={relatedPosts}>
 	<Content />
 </PostLayout>

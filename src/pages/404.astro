@@ -1,13 +1,14 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
+import { t } from "@/i18n/translations";
 
 const meta = {
-	description: "糟糕！看起来这个页面在太空中迷路了！",
-	title: "糟糕！你发现了一个缺失的页面！",
+	description: t("error.404.description"),
+	title: t("error.404.title"),
 };
 ---
 
 <PageLayout meta={meta}>
-	<h1 class="title mb-12">404 | 糟糕，出了点问题</h1>
-	<p class="mb-8">请使用导航找到回去的路</p>
+	<h1 class="title mb-12">{t("error.404.title")}</h1>
+	<p class="mb-8">{t("error.404.description")}</p>
 </PageLayout>

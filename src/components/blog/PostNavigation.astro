@@ -1,0 +1,99 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { t } from "@/i18n/translations";
+import FormattedDate from "@/components/FormattedDate.astro";
+
+interface Props {
+	prevPost?: CollectionEntry<"post">;
+	nextPost?: CollectionEntry<"post">;
+	relatedPosts?: CollectionEntry<"post">[];
+}
+
+const { prevPost, nextPost, relatedPosts } = Astro.props;
+---
+
+<div class="mt-16 border-t border-gray-200 pt-8 dark:border-gray-700">
+	<!-- 上一篇/下一篇文章导航 -->
+	{(prevPost || nextPost) && (
+		<nav class="mb-12" aria-label="文章导航">
+			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+				{prevPost && (
+					<div class="group">
+						<div class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+							{t("post.prevPost")}
+						</div>
+						<a 
+							href={`/posts/${prevPost.id}/`}
+							class="block p-4 rounded-lg border border-gray-200 hover:border-accent dark:border-gray-700 dark:hover:border-accent transition-colors"
+						>
+							<h3 class="font-semibold text-accent-2 group-hover:text-accent line-clamp-2 mb-2">
+								{prevPost.data.title}
+							</h3>
+							<div class="text-sm text-gray-600 dark:text-gray-400">
+								<FormattedDate date={prevPost.data.publishDate} />
+							</div>
+						</a>
+					</div>
+				)}
+				{nextPost && (
+					<div class="group sm:text-right">
+						<div class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+							{t("post.nextPost")}
+						</div>
+						<a 
+							href={`/posts/${nextPost.id}/`}
+							class="block p-4 rounded-lg border border-gray-200 hover:border-accent dark:border-gray-700 dark:hover:border-accent transition-colors"
+						>
+							<h3 class="font-semibold text-accent-2 group-hover:text-accent line-clamp-2 mb-2">
+								{nextPost.data.title}
+							</h3>
+							<div class="text-sm text-gray-600 dark:text-gray-400">
+								<FormattedDate date={nextPost.data.publishDate} />
+							</div>
+						</a>
+					</div>
+				)}
+			</div>
+		</nav>
+	)}
+
+	<!-- 推荐文章 -->
+	{relatedPosts && relatedPosts.length > 0 && (
+		<section class="mt-8">
+			<h2 class="text-xl font-semibold text-accent-2 mb-6">
+				{t("post.relatedPosts")}
+			</h2>
+			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+				{relatedPosts.map((post) => (
+					<article class="group">
+						<a 
+							href={`/posts/${post.id}/`}
+							class="block p-4 rounded-lg border border-gray-200 hover:border-accent dark:border-gray-700 dark:hover:border-accent transition-colors"
+						>
+							<h3 class="font-semibold text-accent-2 group-hover:text-accent line-clamp-2 mb-3">
+								{post.data.title}
+							</h3>
+							{post.data.description && (
+								<p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-3">
+									{post.data.description}
+								</p>
+							)}
+							<div class="text-sm text-gray-500 dark:text-gray-500">
+								<FormattedDate date={post.data.publishDate} />
+							</div>
+						</a>
+					</article>
+				))}
+			</div>
+		</section>
+	)}
+</div>
+
+<style>
+	.line-clamp-2 {
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+</style>
