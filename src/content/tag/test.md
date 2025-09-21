@@ -8,8 +8,8 @@ description: 此标签用于测试主题的各种功能。
 此集合包含演示和测试 Astro Theme Cactus 不同功能的文章，包括：
 
 - Markdown 渲染能力
-- Image handling and optimization
-- Table of contents generation
-- Various edge cases and scenarios
+- 图片处理和优化
+- 目录自动生成
+- 各种边界情况和场景
 
-Feel free to explore these posts to understand how the theme handles different content types and configurations.
+欢迎探索这些文章，了解主题如何处理不同的内容类型和配置。

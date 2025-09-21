@@ -1,134 +1,134 @@
 ---
-title: "Markdown Admonitions"
-description: "This post showcases using the markdown admonition feature in Astro Cactus"
+title: "Markdown 告警组件"
+description: "这篇文章展示了在 Astro Cactus 中使用 Markdown 告警功能"
 publishDate: "25 Aug 2024"
 updatedDate: "4 July 2025"
-tags: ["markdown", "admonitions"]
+tags: ["markdown", "告警组件"]
 ---
 
-## What are admonitions
+## 什么是告警组件
 
-Admonitions (also known as “asides”) are useful for providing supportive and/or supplementary information related to your content.
+告警组件（也称为"旁注"）对于提供与您的内容相关的支持和/或补充信息非常有用。
 
-## How to use them
+## 如何使用它们
 
-To use admonitions in Astro Cactus, wrap your Markdown content in a pair of triple colons `:::`. The first pair should also include the type of admonition you want to use.
+要在 Astro Cactus 中使用告警组件，将您的 Markdown 内容包装在一对三重冒号 `:::` 中。第一对还应该包含您想要使用的告警类型。
 
-For example, with the following Markdown:
-
-```md
-:::note
-Highlights information that users should take into account, even when skimming.
-:::
-```
-
-Outputs:
-
-:::note
-Highlights information that users should take into account, even when skimming.
-:::
-
-## Admonition Types
-
-The following admonitions are currently supported:
-
-- `note`
-- `tip`
-- `important`
-- `warning`
-- `caution`
-
-### Note
+例如，使用以下 Markdown：
 
 ```md
 :::note
-Highlights information that users should take into account, even when skimming.
+突出显示用户应该考虑的信息，即使在浏览时也是如此。
+:::
+```
+
+输出：
+
+:::note
+突出显示用户应该考虑的信息，即使在浏览时也是如此。
+:::
+
+## 告警类型
+
+目前支持以下告警类型：
+
+- `note` - 注意
+- `tip` - 提示
+- `important` - 重要
+- `warning` - 警告
+- `caution` - 小心
+
+### 注意
+
+```md
+:::note
+突出显示用户应该考虑的信息，即使在浏览时也是如此。
 :::
 ```
 
 :::note
-Highlights information that users should take into account, even when skimming.
+突出显示用户应该考虑的信息，即使在浏览时也是如此。
 :::
 
-### Tip
+### 提示
 
 ```md
 :::tip
-Optional information to help a user be more successful.
+帮助用户更成功的可选信息。
 :::
 ```
 
 :::tip
-Optional information to help a user be more successful.
+帮助用户更成功的可选信息。
 :::
 
-### Important
+### 重要
 
 ```md
 :::important
-Crucial information necessary for users to succeed.
+用户成功所需的关键信息。
 :::
 ```
 
 :::important
-Crucial information necessary for users to succeed.
+用户成功所需的关键信息。
 :::
 
-### Caution
+### 小心
 
 ```md
 :::caution
-Negative potential consequences of an action.
+行动的负面潜在后果。
 :::
 ```
 
 :::caution
-Negative potential consequences of an action.
+行动的负面潜在后果。
 :::
 
-### Warning
+### 警告
 
 ```md
 :::warning
-Critical content demanding immediate user attention due to potential risks.
+由于潜在风险需要立即引起用户注意的关键内容。
 :::
 ```
 
 :::warning
-Critical content demanding immediate user attention due to potential risks.
+由于潜在风险需要立即引起用户注意的关键内容。
 :::
 
-## Customising the admonition title
+## 自定义告警标题
 
-You can customise the admonition title using the following markup:
+您可以使用以下标记自定义告警标题：
 
 ```md
-:::note[My custom title]
-This is a note with a custom title.
+:::note[我的自定义标题]
+这是一个带有自定义标题的注意事项。
 :::
 ```
 
-Outputs:
+输出：
 
-:::note[My custom title]
-This is a note with a custom title.
+:::note[我的自定义标题]
+这是一个带有自定义标题的注意事项。
 :::
 
-## GitHub Repository Cards
-You can add dynamic cards that link to GitHub repositories, on page load, the repository information is pulled from the GitHub API.
+## GitHub 仓库卡片
+您可以添加链接到 GitHub 仓库的动态卡片，在页面加载时，仓库信息从 GitHub API 拉取。
 
 ::github{repo="chrismwilliams/astro-theme-cactus"}
 
-You can also link a Github user:
+您也可以链接一个 Github 用户：
 
 ::github{user="withastro"}
 
-To use this feature you just use the "Github" directive:
+要使用此功能，您只需使用"Github"指令：
 
-```markdown title="Linking a repo"
+```markdown title="链接仓库"
 ::github{repo="chrismwilliams/astro-theme-cactus"}
 ```
 
-```markdown title="Linking a user"
+```markdown title="链接用户"
 ::github{user="withastro"}
 ```
