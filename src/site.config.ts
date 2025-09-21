@@ -16,7 +16,7 @@ export const siteConfig: SiteConfig = {
 		},
 	},
 	// Used as the default description meta property and webmanifest description
-	description: "一个基于 Astro 的个人博客主题",
+	description: "破烂中寻找记忆。",
 	// HTML lang property, found in src/layouts/Base.astro L:18 & astro.config.ts L:48
 	lang: "zh-CN",
 	// Meta property, found in src/components/BaseHead.astro L:42
@@ -29,7 +29,7 @@ export const siteConfig: SiteConfig = {
 	*/
 	title: "ACCB",
 	// ! Please remember to replace the following site property with your own domain, used in astro.config.ts
-	url: "https://astro-cactus.chriswilliams.dev/",
+	url: "https://200536.xyz/",
 };
 
 // Used to generate links in both the Header & Footer.
