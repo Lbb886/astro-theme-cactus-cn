@@ -4,7 +4,7 @@ import type { TranslationKey } from "@/i18n/translations";
 
 export const siteConfig: SiteConfig = {
 	// Used as both a meta property (src/components/BaseHead.astro L:31 + L:49) & the generated satori png (src/pages/og-image/[slug].png.ts)
-	author: "博客作者",
+	author: "lbb",
 	// Date.prototype.toLocaleDateString() parameters, found in src/utils/date.ts.
 	date: {
 		locale: "zh-CN",
@@ -27,7 +27,7 @@ export const siteConfig: SiteConfig = {
 		- The link value found in src/components/layout/Header.astro L:35
 		- In the footer found in src/components/layout/Footer.astro L:12
 	*/
-	title: "Astro Cactus",
+	title: "ACCB",
 	// ! Please remember to replace the following site property with your own domain, used in astro.config.ts
 	url: "https://astro-cactus.chriswilliams.dev/",
 };

@@ -1,5 +1,6 @@
 ---
 import { menuLinks, siteConfig } from "@/site.config";
+import { t } from "@/i18n/translations";
 
 const year = new Date().getFullYear();
 ---
@@ -7,9 +8,14 @@ const year = new Date().getFullYear();
 <footer
 	class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pt-20 pb-4 text-center align-top font-semibold text-gray-600 sm:flex-row sm:justify-between sm:text-xs dark:text-gray-400"
 >
-	<div class="me-0 sm:me-4">
-		&copy; {siteConfig.author}
-		{year}.<span class="inline-block">&nbsp;🚀&nbsp;{siteConfig.title}</span>
+	<div class="me-0 sm:me-4 flex flex-col items-center">
+		<div>
+			&copy; {siteConfig.author}
+			{year}.<span class="inline-block">&nbsp;🚀&nbsp;{siteConfig.title}</span>
+		</div>
+		<div>
+      由 <a href="https://astro.build/" target="_blank" class="hover:underline">Astro</a> 强力驱动
+    </div>
 	</div>
 	<nav
 		aria-labelledby="footer_links"
@@ -19,9 +25,21 @@ const year = new Date().getFullYear();
 		{
 			menuLinks.map((link) => (
 				<a class="hover:text-global-text px-4 py-2 hover:underline sm:py-0" href={link.path}>
-					{link.title}
+					{t(link.titleKey)}
 				</a>
 			))
 		}
 	</nav>
+  <div class="me-0 sm:me-4 flex flex-col items-center">
+    <div>
+      <a href="https://icp.gov.moe/?keyword=20246090" target="_blank" rel="noopener">
+        萌ICP备20246090号
+      </a>
+    </div>
+		<div>
+			<a title="无聊湾 🥱 The Boring Bay" href="https://boringbay.com">
+				<img src="https://boringbay.com/api/badge/boringbay.com" alt="无聊湾徽章" style="height: 24px; width: auto;" class="inline-block" />
+			</a>
+		</div>
+  </div>
 </footer>
