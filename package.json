@@ -21,6 +21,7 @@
 		"@astrojs/rss": "4.0.12",
 		"@astrojs/sitemap": "3.5.1",
 		"@tailwindcss/vite": "4.1.13",
+		"@vercel/analytics": "^1.5.0",
 		"astro": "5.13.7",
 		"astro-expressive-code": "^0.41.3",
 		"astro-icon": "^1.1.5",
@@ -63,6 +64,11 @@
 		"overrides": {
 			"sharp": "^0.34.2"
 		},
-		"onlyBuiltDependencies": ["@biomejs/biome", "@tailwindcss/oxide", "esbuild", "sharp"]
+		"onlyBuiltDependencies": [
+			"@biomejs/biome",
+			"@tailwindcss/oxide",
+			"esbuild",
+			"sharp"
+		]
 	}
 }
